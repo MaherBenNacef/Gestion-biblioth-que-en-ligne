@@ -1,0 +1,54 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Theme
+ *
+ * @ORM\Table(name="theme")
+ * @ORM\Entity
+ */
+class Theme
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_theme", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    public $idTheme;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="design_theme", type="string", length=50, nullable=false)
+     */
+    public $designTheme;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="desc_theme", type="string", length=255, nullable=true)
+     */
+    public $descTheme;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Ouvrage", mappedBy="theme")
+     */
+    public $ouvrage;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ouvrage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

@@ -1,0 +1,24 @@
+motscles_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Motscles:index" }
+    methods:  GET
+
+motscles_show:
+    path:     /{idMotsCles}/show
+    defaults: { _controller: "ProjetBundle:Motscles:show" }
+    methods:  GET
+
+motscles_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Motscles:new" }
+    methods:  [GET, POST]
+
+motscles_edit:
+    path:     /{idMotsCles}/edit
+    defaults: { _controller: "ProjetBundle:Motscles:edit" }
+    methods:  [GET, POST]
+
+motscles_delete:
+    path:     /{idMotsCles}/delete
+    defaults: { _controller: "ProjetBundle:Motscles:delete" }
+    methods:  DELETE

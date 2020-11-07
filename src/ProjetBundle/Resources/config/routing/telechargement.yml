@@ -1,0 +1,24 @@
+telechargement_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Telechargement:index" }
+    methods:  GET
+
+telechargement_show:
+    path:     /{idTelechargement}/show
+    defaults: { _controller: "ProjetBundle:Telechargement:show" }
+    methods:  GET
+
+telechargement_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Telechargement:new" }
+    methods:  [GET, POST]
+
+telechargement_edit:
+    path:     /{idTelechargement}/edit
+    defaults: { _controller: "ProjetBundle:Telechargement:edit" }
+    methods:  [GET, POST]
+
+telechargement_delete:
+    path:     /{idTelechargement}/delete
+    defaults: { _controller: "ProjetBundle:Telechargement:delete" }
+    methods:  DELETE

@@ -1,0 +1,42 @@
+
+projet_theme:
+    resource: "@ProjetBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme
+
+projet_telechargement:
+    resource: "@ProjetBundle/Resources/config/routing/telechargement.yml"
+    prefix:   /telechargement
+
+
+projet_personne:
+    resource: "@ProjetBundle/Resources/config/routing/personne.yml"
+    prefix:   /personne
+
+projet_ouvrage:
+    resource: "@ProjetBundle/Resources/config/routing/ouvrage.yml"
+    prefix:   /ouvrage
+
+
+projet_motscles:
+    resource: "@ProjetBundle/Resources/config/routing/motscles.yml"
+    prefix:   /motscles
+
+projet_etudiant:
+    resource: "@ProjetBundle/Resources/config/routing/etudiant.yml"
+    prefix:   /etudiant
+
+projet_enseignant:
+    resource: "@ProjetBundle/Resources/config/routing/enseignant.yml"
+    prefix:   /enseignant
+
+projet_departement:
+    resource: "@ProjetBundle/Resources/config/routing/departement.yml"
+    prefix:   /departement
+
+projet_admin:
+    resource: "@ProjetBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
+
+projet_homepage:
+    path:     /
+    defaults: { _controller: ProjetBundle:Default:index }

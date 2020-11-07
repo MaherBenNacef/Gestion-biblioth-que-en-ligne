@@ -1,0 +1,24 @@
+enseignant_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Enseignant:index" }
+    methods:  GET
+
+enseignant_show:
+    path:     /{idEnseignant}/show
+    defaults: { _controller: "ProjetBundle:Enseignant:show" }
+    methods:  GET
+
+enseignant_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Enseignant:new" }
+    methods:  [GET, POST]
+
+enseignant_edit:
+    path:     /{idEnseignant}/edit
+    defaults: { _controller: "ProjetBundle:Enseignant:edit" }
+    methods:  [GET, POST]
+
+enseignant_delete:
+    path:     /{idEnseignant}/delete
+    defaults: { _controller: "ProjetBundle:Enseignant:delete" }
+    methods:  DELETE

@@ -1,0 +1,24 @@
+admin_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Admin:index" }
+    methods:  GET
+
+admin_show:
+    path:     /{idAdmin}/show
+    defaults: { _controller: "ProjetBundle:Admin:show" }
+    methods:  GET
+
+admin_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Admin:new" }
+    methods:  [GET, POST]
+
+admin_edit:
+    path:     /{idAdmin}/edit
+    defaults: { _controller: "ProjetBundle:Admin:edit" }
+    methods:  [GET, POST]
+
+admin_delete:
+    path:     /{idAdmin}/delete
+    defaults: { _controller: "ProjetBundle:Admin:delete" }
+    methods:  DELETE

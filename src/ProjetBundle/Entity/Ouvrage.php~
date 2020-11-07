@@ -1,0 +1,155 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ouvrage
+ *
+ * @ORM\Table(name="ouvrage")
+ * @ORM\Entity
+ */
+class Ouvrage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ouvrage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    public $idOuvrage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_ouvrage", type="string", length=50, nullable=false)
+     */
+    public $typeOuvrage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=50, nullable=false)
+     */
+    public $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="maison_publication", type="string", length=50, nullable=false)
+     */
+    public $maisonPublication;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="couverture", type="string", length=255, nullable=false)
+     */
+    public $couverture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumee", type="string", length=4096, nullable=false)
+     */
+    public $resumee;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_sortie", type="date", nullable=true)
+     */
+    public $dateSortie;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbre_pages", type="integer", nullable=true)
+     */
+    public $nbrePages;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lien_telechargement", type="string", length=255, nullable=false)
+     */
+    public $lienTelechargement;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="taille", type="bigint", nullable=false)
+     */
+    public $taille;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="supprimee", type="string", length=1, nullable=true)
+     */
+    public $supprimee = 'N';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     */
+    public $dateCreation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbre_telechargement", type="bigint", nullable=true)
+     */
+    public $nbreTelechargement = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbre_vue", type="bigint", nullable=true)
+     */
+    public $nbreVue = '0';
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Personne", mappedBy="ouvrage")
+     */
+    public $personne;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Motscles", mappedBy="ouvrage")
+     */
+    public $motsCles;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Theme", inversedBy="ouvrage")
+     * @ORM\JoinTable(name="theme_ouvrage",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="ouvrage_id", referencedColumnName="id_ouvrage")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="theme_id", referencedColumnName="id_theme")
+     *   }
+     * )
+     */
+    public $theme;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->personne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->motsCles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->theme = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

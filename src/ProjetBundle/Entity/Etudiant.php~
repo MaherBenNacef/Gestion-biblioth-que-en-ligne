@@ -1,0 +1,50 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etudiant
+ *
+ * @ORM\Table(name="etudiant")
+ * @ORM\Entity
+ */
+class Etudiant
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="matricule", type="string", length=20, nullable=true)
+     */
+    public $matricule;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     */
+    public $photo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="niveau_encours", type="smallint", nullable=true)
+     */
+    public $niveauEncours;
+
+    /**
+     * @var \Personne
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Personne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etudiant", referencedColumnName="id_personne")
+     * })
+     */
+    public $idEtudiant;
+
+
+}
+

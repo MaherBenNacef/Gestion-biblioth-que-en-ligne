@@ -1,0 +1,135 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Personne
+ *
+ * @ORM\Table(name="personne", indexes={@ORM\Index(name="FK_app01", columns={"departement_id"})})
+ * @ORM\Entity
+ */
+class Personne
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_personne", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    public $idPersonne;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_prenom_fr", type="string", length=50, nullable=false)
+     */
+    public $nomPrenomFr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_prenom_ar", type="string", length=50, nullable=true)
+     */
+    public $nomPrenomAr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civilite_fr", type="string", length=10, nullable=true)
+     */
+    public $civiliteFr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civilite_ar", type="string", length=20, nullable=true)
+     */
+    public $civiliteAr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=1, nullable=false)
+     */
+    public $sexe = 'H';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naiss", type="date", nullable=false)
+     */
+    public $dateNaiss;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationalite", type="string", length=20, nullable=false)
+     */
+    public $nationalite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=30, nullable=true)
+     */
+    public $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     */
+    public $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel1", type="string", length=15, nullable=true)
+     */
+    public $tel1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=1, nullable=false)
+     */
+    public $etat = 'A';
+
+    /**
+     * @var \Departement
+     *
+     * @ORM\ManyToOne(targetEntity="Departement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="departement_id", referencedColumnName="id_departement")
+     * })
+     */
+    public $departement;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Ouvrage", inversedBy="personne")
+     * @ORM\JoinTable(name="favoris",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="personne_id", referencedColumnName="id_personne")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="ouvrage_id", referencedColumnName="id_ouvrage")
+     *   }
+     * )
+     */
+    public $ouvrage;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ouvrage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

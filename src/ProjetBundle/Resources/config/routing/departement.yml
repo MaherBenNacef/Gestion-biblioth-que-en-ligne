@@ -1,0 +1,24 @@
+departement_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Departement:index" }
+    methods:  GET
+
+departement_show:
+    path:     /{idDepartement}/show
+    defaults: { _controller: "ProjetBundle:Departement:show" }
+    methods:  GET
+
+departement_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Departement:new" }
+    methods:  [GET, POST]
+
+departement_edit:
+    path:     /{idDepartement}/edit
+    defaults: { _controller: "ProjetBundle:Departement:edit" }
+    methods:  [GET, POST]
+
+departement_delete:
+    path:     /{idDepartement}/delete
+    defaults: { _controller: "ProjetBundle:Departement:delete" }
+    methods:  DELETE

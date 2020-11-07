@@ -1,0 +1,55 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Motscles
+ *
+ * @ORM\Table(name="motscles")
+ * @ORM\Entity
+ */
+class Motscles
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_mots_cles", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    public $idMotsCles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="design_mots_cles", type="string", length=50, nullable=false)
+     */
+    public $designMotsCles;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Ouvrage", inversedBy="motsCles")
+     * @ORM\JoinTable(name="motscles_ouvrage",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="mots_cles_id", referencedColumnName="id_mots_cles")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="ouvrage_id", referencedColumnName="id_ouvrage")
+     *   }
+     * )
+     */
+    public $ouvrage;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ouvrage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

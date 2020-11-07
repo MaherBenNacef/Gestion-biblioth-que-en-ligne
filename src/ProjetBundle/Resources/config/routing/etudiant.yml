@@ -1,0 +1,24 @@
+etudiant_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Etudiant:index" }
+    methods:  GET
+
+etudiant_show:
+    path:     /{idEtudiant}/show
+    defaults: { _controller: "ProjetBundle:Etudiant:show" }
+    methods:  GET
+
+etudiant_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Etudiant:new" }
+    methods:  [GET, POST]
+
+etudiant_edit:
+    path:     /{idEtudiant}/edit
+    defaults: { _controller: "ProjetBundle:Etudiant:edit" }
+    methods:  [GET, POST]
+
+etudiant_delete:
+    path:     /{idEtudiant}/delete
+    defaults: { _controller: "ProjetBundle:Etudiant:delete" }
+    methods:  DELETE

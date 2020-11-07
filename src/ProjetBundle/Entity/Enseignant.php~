@@ -1,0 +1,43 @@
+<?php
+
+
+namespace ProjetBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Enseignant
+ *
+ * @ORM\Table(name="enseignant")
+ * @ORM\Entity
+ */
+class Enseignant
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cin", type="string", length=8, nullable=false)
+     */
+    public $cin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel2", type="string", length=15, nullable=true)
+     */
+    public $tel2;
+
+    /**
+     * @var \Personne
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Personne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_enseignant", referencedColumnName="id_personne")
+     * })
+     */
+    public $idEnseignant;
+
+
+}
+
